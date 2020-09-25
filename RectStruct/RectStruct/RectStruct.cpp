@@ -3,39 +3,41 @@
 
 #include <iostream>
 #include <math.h>
-
+#include <sstream>
 /*      
     + - - - +
     | 0 0 0 |
     + - - - +
 minX/minY maxX/maxY
 */
+//did the best I could
 
 struct Rect 
 {
     float minX;
-    float maxX;
+    float maxX;//width?
     float minY;
-    float maxY;
+    float maxY;//height?
 };
 
 float distToRect(float x, float y, Rect& rect)
 {
     //point P = (x,y)
-    float pX = (rect.minX - x, x-rect.maxX); //fine location & dist of point P
-    float pY = (rect.minY - y, x-rect.maxY);
+    float pX = (abs(x - rect.minX) - rect.maxX/2,0); //find location & dist of point P
+    float pY = (abs(y - rect.minY) - rect.maxY/2,0);
 
-    return sqrt(pX * pX),sqrt(pY*pY);
+    return (pX * pX+pY*pY);
 }
 
 int main()
 {
     Rect rectangle;
     rectangle.minX = 1;
-    rectangle.minY = 4;
+    rectangle.minY = 6;
     rectangle.maxX = 3;
-    rectangle.maxY = 4;
-    distToRect(2,2,rectangle);
+    rectangle.maxY = 5;
+    distToRect(2, 2, rectangle);
+    std::cout << distToRect << std::endl; //prints hex val... not good. the hard math does not agree with this either.
     return 0;
 }
 
