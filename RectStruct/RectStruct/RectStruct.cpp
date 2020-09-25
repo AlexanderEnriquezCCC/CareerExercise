@@ -35,6 +35,7 @@ int main()
     rectangle.minY = 4;
     rectangle.maxX = 3;
     rectangle.maxY = 4;
+    distToRect(2,2,rectangle);
     return 0;
 }
 
